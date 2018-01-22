@@ -1,10 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-MediumItalic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -13,13 +21,65 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lva-1P-aTv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whatsONlogo" translatesAutoresizingMaskIntoConstraints="NO" id="WTo-dh-JuO">
+                                        <rect key="frame" x="34" y="249.5" width="307" height="167"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="307" id="yvd-XA-K0i"/>
+                                            <constraint firstAttribute="height" constant="167" id="zol-Vw-572"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find out..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y2-HP-L9A">
+                                        <rect key="frame" x="149" y="218.5" width="77.5" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="Fsq-a6-hLs"/>
+                                            <constraint firstAttribute="width" constant="77.5" id="or4-nc-jmC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...in your area!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kob-PM-iFi">
+                                        <rect key="frame" x="133" y="416.5" width="109" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="109" id="17c-vo-e4q"/>
+                                            <constraint firstAttribute="height" constant="31" id="xNU-8e-ktO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83137254900000002" green="0.48534514080000002" blue="0.47165984030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="1y2-HP-L9A" firstAttribute="centerX" secondItem="lva-1P-aTv" secondAttribute="centerX" id="4PO-g6-XGE"/>
+                                    <constraint firstItem="kob-PM-iFi" firstAttribute="top" secondItem="WTo-dh-JuO" secondAttribute="bottom" id="BLj-nS-uWQ"/>
+                                    <constraint firstItem="kob-PM-iFi" firstAttribute="centerX" secondItem="lva-1P-aTv" secondAttribute="centerX" id="K8d-44-Ldh"/>
+                                    <constraint firstItem="WTo-dh-JuO" firstAttribute="top" secondItem="1y2-HP-L9A" secondAttribute="bottom" id="Kh3-Hn-eRz"/>
+                                    <constraint firstItem="WTo-dh-JuO" firstAttribute="centerX" secondItem="lva-1P-aTv" secondAttribute="centerX" id="OdA-li-Qcr"/>
+                                    <constraint firstItem="WTo-dh-JuO" firstAttribute="centerY" secondItem="lva-1P-aTv" secondAttribute="centerY" id="y8M-0N-VKd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lva-1P-aTv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3hx-Ru-n49"/>
+                            <constraint firstItem="lva-1P-aTv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OvA-bT-tfp"/>
+                            <constraint firstItem="lva-1P-aTv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cHz-pX-Wz4"/>
+                            <constraint firstItem="lva-1P-aTv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="d5g-7c-hJu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="whatsONlogo" width="2362" height="945"/>
+    </resources>
 </document>

@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class Event: Hashable {
+class Event {
 
     var _title: String!
     var _thumb: UIImage!
@@ -17,18 +17,10 @@ class Event: Hashable {
     var _ageRange: String!
     var _suburb: String!
     var _gender: String!
-    var _eventId: Int
+    var _eventId: Int!
     var _coordinate = CLLocationCoordinate2D()
     var _eventType: String!
-    private var nextId = 0
-//    var hashValue: Int {
-//        return self._eventId
-//    }
 
-//    static var nextUid = 1
-//    static func generateUid() -> Int {
-//        return nextUid++
-//    }
     
     var title: String {
     if _title == nil {
@@ -76,6 +68,7 @@ class Event: Hashable {
     return _gender
     }
     
+
     var eventId: Int {
         return _eventId
     }
@@ -83,16 +76,10 @@ class Event: Hashable {
     var coordinate: CLLocationCoordinate2D {
         return _coordinate
     }
-
-    func generate() -> Int {
-        nextId += 1
-        return nextId
-    }
-
     
-    init(title: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, eventId: Int,coordinate: CLLocationCoordinate2D) {
     self._title = title
-    self._eventId = Event.generate()
+    self._eventId = eventId
     self._coordinate = coordinate
     }
 

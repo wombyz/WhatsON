@@ -9,12 +9,15 @@
 import UIKit
 import PhotosUI
 import Photos
+import NotificationCenter
 
-class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
+    var Events = [Event]()
     var buttonPressed = false
     var imagePicker = UIImagePickerController()
     var myEvent: Event!
+    var eID = 0
 
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var eventNameLbl: UITextView!
@@ -31,13 +34,21 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var selectImgBtn: UIButton!
     @IBOutlet weak var thumbImg: UIImageView!
+    @IBOutlet weak var addressLbl: UITextField!
+    @IBOutlet weak var address: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         typePicker.dataSource = self
         typePicker.delegate = self
-        
+        thumbImg.layer.cornerRadius = thumbImg.frame.size.width/2
+        thumbImg.clipsToBounds = true
+        descLbl.delegate = self
+        ageRangeLbl.delegate = self
+        suburbLbl.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateEventVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func hideOrRemoveFieldsForPickerView() {
@@ -53,6 +64,8 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             eventType.isHidden = true
             createBtn.isHidden = true
             cancelBtn.isHidden = true
+            addressLbl.isHidden = true
+            address.isHidden = true
         } else {
             eventTypeBtn.isHidden = false
             genderBtn.isHidden = false
@@ -64,6 +77,9 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
             eventType.isHidden = false
             createBtn.isHidden = false
             cancelBtn.isHidden = false
+            addressLbl.isHidden = false
+            address.isHidden = false
+
         }
         
     }
@@ -137,13 +153,11 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
 
     @IBAction func selectImagePressed(_ sender: UIButton) {
         
-        var image = UIImagePickerController()
+        let image = UIImagePickerController()
         image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         self.present(image, animated: true, completion: nil)
         
-        thumbImg.isHidden = false
-        selectImgBtn.isHidden = true
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -153,18 +167,67 @@ class CreateEventVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         thumbImg.image = img
         
         self .dismiss(animated: true, completion: nil)
+        thumbImg.isHidden = false
+        selectImgBtn.isHidden = true
+//        selectImgBtn.alpha = 0.0
     }
     
     func generateEventID() {
-        let uuid = UUID().uuidString
-        print(uuid)
-        myEvent._eventId = uuid 
+//        let newEID = eID += 1
+//        print(newEID)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
-    @IBAction func createBtnPressed(_ sender: UIButton) {
-        generateEventID()
-        print(myEvent._eventId)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        ageRangeLbl.resignFirstResponder()
+        suburbLbl.resignFirstResponder()
+        addressLbl.resignFirstResponder()
+        return true
     }
     
-}
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+        self.view.frame.origin.y = 0
+    }
+    
+    @IBAction func createBtnPressed(_ sender: UIButton){
+    //Events.append(myEvent)
+//        myEvent._title = eventNameLbl.text
+//        myEvent._description = descLbl.text
+//        myEvent._ageRange = ageRangeLbl.text
+//        myEvent._suburb = suburbLbl.text
+//        myEvent._eventType = eventTypeBtn.title(for: .normal)
+//        myEvent._gender = genderBtn.title(for: .normal)
+//        myEvent._thumb = thumbImg.image
+//
+//        print(myEvent._title)
+//        print(myEvent._description)
+//        print(myEvent._ageRange)
+//        print(myEvent._suburb)
+//        print(myEvent._eventType)
+//        print(myEvent._gender)
+    }
+} 
+    
+
 

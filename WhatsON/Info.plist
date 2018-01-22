@@ -41,5 +41,29 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need permission to use your photos as a thumbnail!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need to know where you are!</string>
+    
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb1843188765704931</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>1843188765704931</string>
+    <key>FacebookDisplayName</key>
+    <string>WhatsON</string>
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>
